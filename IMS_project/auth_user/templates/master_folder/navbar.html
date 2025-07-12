@@ -9,7 +9,7 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href=" {% url 'home_page' %} ">Home</a>
         </li>
-          {% if request.user.user_type == 'teacher' %}
+          {% if request.user.user_type == 'admin' %}
 
          <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="{% url 'teacher_list' %}">Teacher</a>
@@ -19,9 +19,13 @@
          <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="{% url 'register_teacher' %}">Teacher register</a>
         </li>
+
+         <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'pending_student_list' %}">Pending Student List</a>
+        </li>
           {% endif %}
           
-          {% if request.user.user_type == 'student' %}
+          {% if request.user.user_type == 'teacher' or request.user.user_type == 'admin' %}
 
          <li class="nav-item">
           <a class="nav-link active" aria-current="page" href=" {% url "student_list" %} ">student</a>
@@ -31,6 +35,11 @@
           <a class="nav-link active" aria-current="page" href=" {% url "student_register" %} ">student_register</a>
         </li>
           {% endif %}
+
+          <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'logout_page' %}">logout</a>
+        </li>
+
           
          
         

@@ -35,4 +35,18 @@ class StudentModel(models.Model):
     phone_number =models.CharField(max_length=15, null=True)
     profile_picture = models.ImageField(upload_to='student_profile/pictures/', null=True, blank=True)
 
+
+
+
+class PandingModel(models.Model):
+    username = models.CharField(max_length=150, null=True)
+    email= models.EmailField(max_length=254, null=True)
+    full_name =models.CharField(max_length=100, null=True)
+    phone_number =models.CharField(max_length=15, null=True)
+    profile_picture = models.ImageField(upload_to='student_profile/pictures/', null=True, blank=True)
+
+
+    def __str__(self):
+        return self.full_name
+
   

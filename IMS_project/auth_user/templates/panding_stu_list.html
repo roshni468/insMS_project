@@ -3,12 +3,6 @@
 
 
 
-{% if request.user.user_type == 'admin' %}
-<a href="{% url 'student_register' %}">student register</a>
-{% endif %}
-{% if request.user.user_type == 'teacher' %}
-<a href="{% url 'pending_student_register' %}">pending student register</a>
-{% endif %}
 
 
 <!DOCTYPE html>
@@ -62,7 +56,7 @@
 <body>
 
     <table>
-        <h1 style="text-align: center;">student List</h1>
+        <h1 style="text-align: center;">pending student List</h1>
         <thead>
             <tr>
                 <th>username</th>
@@ -70,18 +64,28 @@
                 <th>student_name</th>
                 <th>phone_number</th>
                 <th>Profile Picture</th>
-                
+                {% if request.user.user_type == 'admin' %}
+                <th>Actions</th>
+                {% endif %}
+
+
+
             </tr>
         </thead>
         <tbody>
-            {% for student in student_data %}
+            {% for student in pending_data %}
             <tr>
-                <td>{{ student.S_user.username }}</td>
-                <td>{{ student.S_user.email }}</td>
-                <td>{{ student.student_name }}</td>
+                <td>{{ student.username }}</td>
+                <td>{{ student.email }}</td>
+                <td>{{ student.full_name }}</td>
                 <td>{{ student.phone_number }}</td>
                 <td><img src="{{ student.profile_picture.url }}" alt="Profile Picture" width="50" height="50"></td>
-               
+                 {% if request.user.user_type == 'admin' %}
+                <td>
+                    <a href="{% url 'accept_pending_student' student.id %}">Accept</a> /
+                    <a href="{% url 'accept_pending_student' student.id %}">Delete</a>
+                </td>
+                {% endif %}
             </tr>
             {% endfor %}
         </tbody>
