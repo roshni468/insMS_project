@@ -32,13 +32,16 @@ class AdmittedcourseModel(models.Model):
 
 
 class payment_historyModel(models.Model):
-    student = models.ForeignKey(StudentModel, on_delete=models.CASCADE, null=True, related_name='payment_history')
-    course = models.ForeignKey(CourseModel, on_delete=models.CASCADE, null=True, related_name='payment_history')
+    
+    course = models.ForeignKey(AdmittedcourseModel, on_delete=models.CASCADE, null=True, related_name='payment_history')
     payment_date = models.DateTimeField(auto_now_add=True, null=True)
     amount_paid = models.PositiveIntegerField(null=True)
     due= models.PositiveIntegerField(null=True)
 
-  
 
     def __str__(self):
-        return f"{self.student.student_name} - {self.course.course_Title} - {self.amount_paid}"
+        return self.student.student_name 
+
+  
+
+    

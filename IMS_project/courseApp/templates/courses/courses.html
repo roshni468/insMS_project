@@ -1,0 +1,85 @@
+{% extends "master_folder/master.html" %}
+{% block body %}
+
+
+
+{% if request.user.user_type == 'admin' %}
+<a href="{% url 'create_course' %}">create course</a>
+{% endif %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Styled Table</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 40px;
+            background-color: #f5f5f5;
+        }
+
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin: 0 auto;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        th,
+        td {
+            padding: 12px 20px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: #007BFF;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        caption {
+            margin-bottom: 15px;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+
+    <table>
+        <h1 style="text-align: center;">course List</h1>
+        <thead>
+            <tr>
+                <th>course_Title</th>
+                <th>course_duration</th>
+                <th>course_description</th>
+                <th>course_fee</th>
+                <th>assign_Teacher</th>
+            </tr>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in courses %}
+            <tr>
+                <td>{{ i.course_Title }}</td>
+                <td>{{ i.course_duration }}</td>
+                <td>{{ i.course_description }}</td>
+                <td>{{ i.course_fee }}</td>
+                <td>{{ i.assign_course }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock body %}

@@ -1,0 +1,32 @@
+{% extends "master_folder/master.html" %}
+{% block body %}
+
+<h1>admitted_courses_List</h1>
+
+<a href="{% url 'admitted_courses' %}">admin course</a>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Course</th>
+            <th>Student</th>
+            <th>Payment</th>
+            <th>Course Fee</th>
+            <th>Due</th>
+            <th>course_start_date</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for course in admitted_courses %}
+        <tr>
+            <td>{{ course.course }}</td>
+            <td>{{ course.student }}</td>
+            <td>{{ course.payment }}</td>
+            <td>{{ course.course_fee }}</td>
+            <td>{{ course.due }}</td>
+            <td>{{ course.course.course_start_date }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock body %}

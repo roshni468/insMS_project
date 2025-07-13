@@ -3,4 +3,10 @@
 {% block body %}
   <h1>Welcome to the Home Page</h1>
   <h2>registered user: {{ request.user.user_type }}</h2>
+  {% comment %} <h3>teacher name: {{ request.user.teacher_info.teacher_name }}</h3>
+
+
+  {% for student in request.user.student_info.all %}
+    <h4>student name: {{ student.student_name }}</h4>
+  {% endfor %} {% endcomment %}
 {% endblock body %}

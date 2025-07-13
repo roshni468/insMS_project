@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Signup Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f6f8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .form-container {
+      background: white;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      width: 320px;
+    }
+    h2 {
+      margin-bottom: 1.5rem;
+      text-align: center;
+      color: #333;
+    }
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: #555;
+      font-weight: 600;
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 0.5rem;
+      margin-bottom: 1.2rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+    }
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="password"]:focus {
+      border-color: #007BFF;
+      outline: none;
+    }
+    select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      background: #fff;
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+    select:focus {
+      border-color: #007BFF;
+      outline: none;
+    }
+    button {
+      width: 100%;
+      background-color: #007BFF;
+      border: none;
+      padding: 0.75rem;
+      color: white;
+      font-size: 1.1rem;
+      font-weight: bold;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Admit_course</h2>
+    <form action=" " method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+     <label for="course">Student</label>
+      <select name="Student" id="course" required>
+        <option value="">-- Choose --</option>
+        {% for student in student_list %}
+          <option value="{{ student.id }}">{{ student.student_name }}</option>
+        {% endfor %}
+      </select>
+     <label for="course">course</label>
+      <select name="course" id="course" required>
+        <option value="">-- Choose --</option>
+        {% for course in course_list %}
+          <option value="{{ course.id }}">{{ course.course_Title }}-{{ course.course_fee }}</option>
+        {% endfor %}
+      </select>
+      
+      <label for="payment">payment</label>
+      <input type="number" id="payment" name="payment" required />
+
+     
+    
+<button type="submit">admitted_courses</button>
+    </form>
+      
+  </div>
+  
+</body>
+</html>

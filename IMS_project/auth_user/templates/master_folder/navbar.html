@@ -35,6 +35,14 @@
           <a class="nav-link active" aria-current="page" href=" {% url "student_register" %} ">student_register</a>
         </li>
           {% endif %}
+          
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'courses_page' %}">courses</a>
+         </li>
+
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'admitted_courses_list' %}">admitted_courses_list</a>
+         </li>
 
           <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="{% url 'logout_page' %}">logout</a>
